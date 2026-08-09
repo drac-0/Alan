@@ -6,7 +6,7 @@
 
 typedef struct{
       int x;
-      int y;
+      float y;
 }csvDat;
 
 float Slope(int XYsum, int Xsum, int Ysum, int SXsum);
