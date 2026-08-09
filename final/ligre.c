@@ -28,7 +28,8 @@ csvDat * readCSV(FILE * csvFile){
                           );
 
             if (read == 2) records++;
-      }while (feof(csvFile));
+
+      }while (!feof(csvFile));
 
       return Daf;
 }
