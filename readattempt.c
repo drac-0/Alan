@@ -6,7 +6,6 @@ struct sales{
       float Pout;
 }; 
 
-
 int main(){
       FILE * csv = fopen("./slr_data.csv", "r") ;
 
@@ -28,7 +27,7 @@ int main(){
             }
 
       }while (!feof(csv));
-      
+
       fclose(csv);
 
       for (int i = 0 ; i < records ; i++){
