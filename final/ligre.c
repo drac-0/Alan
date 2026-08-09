@@ -15,7 +15,7 @@ float Ligre(int XYsum, int Xsum, int Ysum, int SXsum, int input){
       return Slope(XYsum, Xsum, Ysum, SXsum) * input + Bias(XYsum, Xsum, Ysum, SXsum);
 }
 
-csvDat * read(FILE * csvFile){
+csvDat * readCSV(FILE * csvFile){
       csvDat * Daf = malloc(sizeof(csvDat) * 2048);
 
       int read = 0;
@@ -29,7 +29,7 @@ csvDat * read(FILE * csvFile){
 
             if (read == 2) records++;
       }while (feof(csvFile));
-      
+
       return Daf;
 }
 
