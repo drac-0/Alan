@@ -15,8 +15,7 @@ float Bias(int XYsum, int Xsum, int Ysum, int SXsum);
 
 float Ligre(int XYsum, int Xsum, int Ysum, int SXsum, int input);
 
-csvDat * read(FILE *csvFile);
-
+csvDat * readCSV(FILE *csvFile);
 
 #endif // !lireg
 #define lireg
