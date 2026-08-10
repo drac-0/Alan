@@ -2,6 +2,7 @@
 #define lireg
 
 #include <fcntl.h>
+#include <stddef.h>
 #include <stdio.h>
 
 typedef struct{
@@ -9,13 +10,18 @@ typedef struct{
       float y;
 }csvDat;
 
-float Slope(int XYsum, int Xsum, int Ysum, int SXsum);
+typedef struct{
+      csvDat * Data;
+      unsigned int length;
+} mainData;
 
-float Bias(int XYsum, int Xsum, int Ysum, int SXsum);
+float Slope(float XYsum, int Xsum, float Ysum, int SXsum, int length);
 
-float Ligre(int XYsum, int Xsum, int Ysum, int SXsum, int input);
+float Bias(float XYsum, int Xsum, float Ysum, int SXsum, int length);
 
-csvDat * readCSV(FILE *csvFile);
+float Ligre(float XYsum, int Xsum, float Ysum, int SXsum, int input, int length);
+
+mainData * readCSV(FILE *csvFile);
 
 #endif // !lireg
 #define lireg
