@@ -1,22 +1,22 @@
 #include "lireg.h"
-#include <stdio.h>
 #include <stdlib.h>
 
-float Slope(int XYsum, int Xsum, int Ysum, int SXsum){
-      return (float)((5 * XYsum) - (Xsum * Ysum)) / (float)((5 * SXsum) - (Xsum * Xsum));
+float Slope(float XYsum, int Xsum, float Ysum, int SXsum, int length){
+      return (float)((length * XYsum) - (Xsum * Ysum)) / (float)((length * SXsum) - (Xsum * Xsum));
 }
 
-float Bias(int XYsum, int Xsum, int Ysum, int SXsum){
-      float CalSlope = Slope(XYsum, Xsum, Ysum, SXsum);
-      return (((float)Ysum - ((float)Xsum * CalSlope))) / 5;
+float Bias(float XYsum, int Xsum, float Ysum, int SXsum, int length){
+      float CalSlope = Slope(XYsum, Xsum, Ysum, SXsum, length);
+      return ((Ysum - ((float)Xsum * CalSlope))) / length;
 }
 
-float Ligre(int XYsum, int Xsum, int Ysum, int SXsum, int input){
-      return Slope(XYsum, Xsum, Ysum, SXsum) * input + Bias(XYsum, Xsum, Ysum, SXsum);
+float Ligre(float XYsum, int Xsum, float Ysum, int SXsum, int input, int length){
+      return Slope(XYsum, Xsum, Ysum, SXsum,length) * input + Bias(XYsum, Xsum, Ysum, SXsum, length);
 }
 
-csvDat * readCSV(FILE * csvFile){
+mainData * readCSV(FILE * csvFile){
       csvDat * Daf = malloc(sizeof(csvDat) * 2048);
+      mainData * Act = malloc(sizeof(mainData));
 
       int read = 0;
       int records = 0;
@@ -31,6 +31,9 @@ csvDat * readCSV(FILE * csvFile){
 
       }while (!feof(csvFile));
 
-      return Daf;
+      Act->length = records;
+      Act->Data = Daf;
+
+      return Act;
 }
 
