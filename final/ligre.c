@@ -37,3 +37,15 @@ mainData * readCSV(FILE * csvFile){
       return Act;
 }
 
+float MSE(float Slope, float Bi, mainData * evaluated){
+      float SSE = 0;
+
+      for (int i = 0 ; i < evaluated->length; i++){
+            float pred = (Slope * evaluated->Data[i].x + Bi);
+            SSE += ((evaluated->Data[i].y - pred) * (evaluated->Data[i].y - pred)) ;
+      }
+
+      return SSE / evaluated->length;
+
+}
+
