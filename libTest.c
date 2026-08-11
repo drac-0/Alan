@@ -12,7 +12,6 @@ int main(){
       int SXsum = 0;
       float XYsum = 0;
 
-
       for (int i = 0; i < data->length ; i++){
             Xsum += data->Data[i].x;
             Ysum += data->Data[i].y;
@@ -31,6 +30,9 @@ int main(){
       float Lg = Ligre(XYsum, Xsum, Ysum, SXsum, input,data->length);
 
       printf("%f\n", Lg);
+
+      float m = MSE(S, B, data);
+      printf("%f\n",m);
 
       free(data->Data);
       free(data);
