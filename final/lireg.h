@@ -23,5 +23,7 @@ float Ligre(float XYsum, int Xsum, float Ysum, int SXsum, int input, int length)
 
 mainData * readCSV(FILE *csvFile);
 
+float MSE(float Slope, float Bi, mainData *evaluated);
+
 #endif // !lireg
 #define lireg
