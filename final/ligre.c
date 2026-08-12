@@ -49,3 +49,7 @@ float MSE(float Slope, float Bi, mainData * evaluated){
 
 }
 
+float RMSE(float MSE){
+      return sqrt(MSE);
+}
+
