@@ -34,7 +34,11 @@ int main(){
       float m = MSE(S, B, data);
       printf("%f\n",m);
 
+      float Rm = RMSE(m);
+      printf("%lf\n",Rm);
+
+      
+
       free(data->Data);
       free(data);
-
 }
