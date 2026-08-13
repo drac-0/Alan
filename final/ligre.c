@@ -1,5 +1,4 @@
 #include "lireg.h"
-#include <stdlib.h>
 
 float Slope(float XYsum, int Xsum, float Ysum, int SXsum, int length){
       return (float)((length * XYsum) - (Xsum * Ysum)) / (float)((length * SXsum) - (Xsum * Xsum));
@@ -46,10 +45,28 @@ float MSE(float Slope, float Bi, mainData * evaluated){
       }
 
       return SSE / evaluated->length;
-
 }
 
 float RMSE(float MSE){
       return sqrt(MSE);
 }
+
+float MAE(float Slope, float Bi, mainData *evaluated){
+      float SAE = 0;
+
+      for (int i = 0 ; i < evaluated->length; i++){
+            float pred = (Slope * evaluated->Data[i].x + Bi);
+            SAE += fabs((evaluated->Data[i].y - pred));
+      }
+      return SAE / evaluated->length;
+}
+
+
+
+float absolutefloat(){
+
+}
+
+
+
 
