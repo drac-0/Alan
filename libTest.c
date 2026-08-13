@@ -28,7 +28,6 @@ int main(){
       scanf("%d", &input);
 
       float Lg = Ligre(XYsum, Xsum, Ysum, SXsum, input,data->length);
-
       printf("%f\n", Lg);
 
       float m = MSE(S, B, data);
@@ -37,7 +36,10 @@ int main(){
       float Rm = RMSE(m);
       printf("%lf\n",Rm);
 
-      
+
+      float ma = MAE(S, B, data);
+      printf("%f\n",ma);
+
 
       free(data->Data);
       free(data);
