@@ -7,6 +7,8 @@
 #include <math.h>
 #include <stdlib.h>
 
+#define absolute(x) ((unsigned int) x ^ 0xFFFFFFFF) + 1
+
 typedef struct{
       int x;
       float y;
@@ -28,6 +30,11 @@ mainData * readCSV(FILE *csvFile);
 float MSE(float Slope, float Bi, mainData *evaluated);
 
 float RMSE(float MSE);
+
+float MAE(float Slope, float Bi, mainData *evaluated);
+
+float absolutefloat();
+
 
 #endif // !lireg
 #define lireg
