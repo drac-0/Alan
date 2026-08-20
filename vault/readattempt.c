@@ -22,8 +22,11 @@ int main(){
                           &s1[records].Pout);
 
             printf("%d %lf\n", s1[records].Pin, s1[records].Pout);
-            if (read == 2){
-                  records++;
+
+            if (read == 2) records++;
+
+            else if(read == 0){
+                  fscanf(csv, "%*[^\n]\n"); // eat the line
             }
 
       }while (!feof(csv));
