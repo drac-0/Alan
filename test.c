@@ -37,18 +37,18 @@ float q_rewrite(float number){
 
 
 int main(){
-      //int a = -8;
-      //float c = -2.0;
-      //long temp = * (long *) &c;
-      //temp ^= 0xFFFFFFFF;
-      //float d = * (float *) &temp;
-      //unsigned int b = ((unsigned int) a ^ 0xFFFFFFFF) + 1;
-      //printf("%d , %u\n", a, b);
-      //printf("%f , %f\n", c, d);
+      int a = -8;
+      float c = -2.0;
+      long temp = * (long *) &c;
+      temp ^= 0xFFFFFFFF;
+      float d = * (float *) &temp;
+      unsigned int b = ((unsigned int) a ^ 0xFFFFFFFF) + 1;
+      printf("%d , %u\n", a, b);
+      printf("%f , %f\n", c, d);
 
-      //int x = -5;
-      //unsigned int y = absolute(x);
-      //printf("%d , %u\n", x, y);
+      int x = -5;
+      unsigned int y = absolute(x);
+      printf("%d , %u\n", x, y);
 
       float in = 100;
       float out = q_rsqrt(in);
