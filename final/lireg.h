@@ -6,18 +6,22 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #define absolute(x) ((unsigned int) x ^ 0xFFFFFFFF) + 1
+typedef uint32_t  u32t ;
 
-typedef struct{
+typedef struct tag{
       int x;
       float y;
 }csvDat;
 
-typedef struct{
+typedef struct efrim{
       csvDat * Data;
       unsigned int length;
 } mainData;
+
+mainData * Init();
 
 float Slope(float XYsum, int Xsum, float Ysum, int SXsum, int length);
 
@@ -27,6 +31,8 @@ float Ligre(float XYsum, int Xsum, float Ysum, int SXsum, int input, int length)
 
 mainData * readCSV(FILE *csvFile);
 
+mainData * readCSVpy(char * path);
+
 float MSE(float Slope, float Bi, mainData *evaluated);
 
 float RMSE(float MSE);
@@ -35,6 +41,9 @@ float MAE(float Slope, float Bi, mainData *evaluated);
 
 float absolutefloat();
 
+float MAE_FuckUnion_FuckFABS(float Slope, float Bi, mainData *evaluated);
+
+mainData assembled();
 
 #endif // !lireg
 #define lireg
