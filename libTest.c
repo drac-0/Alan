@@ -5,7 +5,8 @@
 
 int main(){
       FILE * Pcsv = fopen("./slr_data.csv", "r");
-      mainData * data = readCSV(Pcsv);
+      //mainData * data = readCSV(Pcsv);
+      mainData * data = readCSVpy("./slr_data.csv");
 
       int Xsum = 0;
       float Ysum = 0;
@@ -36,10 +37,11 @@ int main(){
       float Rm = RMSE(m);
       printf("%lf\n",Rm);
 
-
       float ma = MAE(S, B, data);
       printf("%f\n",ma);
 
+      float ma2 = MAE_FuckUnion_FuckFABS(S, B, data);
+      printf("%f\n",ma2);
 
       free(data->Data);
       free(data);
