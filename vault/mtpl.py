@@ -12,11 +12,13 @@ numY = csv["y"].to_numpy()
 
 numX = numX.reshape(-1, 1)
 numY = numY.reshape(-1, 1)
+print(numX)
 
 model = LinearRegression()
 model.fit(numX, numY)
 
 Prediction = model.predict(numX)
+print(Prediction)
 
 plt.scatter(list(csv["x"]), list(csv["y"]))
 plt.plot(numX, Prediction, color='red', linewidth = 2)
