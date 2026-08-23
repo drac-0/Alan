@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
+
 int main(){
       FILE * Pcsv = fopen("./slr_data.csv", "r");
       //mainData * data = readCSV(Pcsv);
@@ -42,6 +43,15 @@ int main(){
 
       float ma2 = MAE_FuckUnion_FuckFABS(S, B, data);
       printf("%f\n",ma2);
+
+      //it's time to create array for the Y pred. Therefore i can visualize it later with matplotlib
+      //Fuck python
+
+      float * Y_Pred = malloc(sizeof(float) * data->length);
+
+      for (int i = 0 ; i < data->length ; i++){
+            Y_Pred[i] = Ligre(XYsum, Xsum, Ysum, SXsum, data->Data[i].x,data->length);
+      }
 
       free(data->Data);
       free(data);
