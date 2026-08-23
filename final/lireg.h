@@ -11,15 +11,26 @@
 #define absolute(x) ((unsigned int) x ^ 0xFFFFFFFF) + 1
 typedef uint32_t  u32t ;
 
-typedef struct tag{
+typedef struct{
       int x;
       float y;
 }csvDat;
 
-typedef struct efrim{
+typedef struct{
       csvDat * Data;
       unsigned int length;
 } mainData;
+
+typedef struct{
+      float Slope;
+      float Bias;
+      float Lireg;
+      float MSE;
+      float MAE;
+      float RMSE;
+      csvDat * Pred;
+      float * Y_Predict;
+}result;
 
 mainData * Init();
 
@@ -39,11 +50,9 @@ float RMSE(float MSE);
 
 float MAE(float Slope, float Bi, mainData *evaluated);
 
-float absolutefloat();
-
 float MAE_FuckUnion_FuckFABS(float Slope, float Bi, mainData *evaluated);
 
-mainData assembled();
+result * assembled(char * path);
 
 #endif // !lireg
 #define lireg
