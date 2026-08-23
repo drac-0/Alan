@@ -118,13 +118,46 @@ float MAE_FuckUnion_FuckFABS(float Slope, float Bi, mainData *evaluated){
       return SAE / evaluated->length;
 }
 
-mainData * Init(){
+result * assembled(char * path){
       csvDat * csvDat = calloc(sizeof(csvDat), BUFSIZ);
-      mainData * ThisIsAllIhave =  calloc(sizeof(mainData), 1);
-      unsigned int length = 0;
+      mainData * data = readCSVpy(path);
 
-      ThisIsAllIhave->length = length;
-      ThisIsAllIhave->Data = csvDat;
+      int Xsum = 0;
+      float Ysum = 0;
+      int SXsum = 0;
+      float XYsum = 0;
 
-      return ThisIsAllIhave;
+      for (int i = 0; i < data->length ; i++){
+            Xsum += data->Data[i].x;
+            Ysum += data->Data[i].y;
+            SXsum += (data->Data[i].x * data->Data[i].x);
+            XYsum += (data->Data[i].x * data->Data[i].y);
+      }
+
+      float S = Slope(XYsum, Xsum, Ysum, SXsum, data->length);
+
+      float B = Bias(XYsum, Xsum, Ysum, SXsum, data->length);
+
+      int input = 0;
+
+      float Lg = Ligre(XYsum, Xsum, Ysum, SXsum, input,data->length);
+
+      float m = MSE(S, B, data);
+
+      float Rm = RMSE(m);
+
+      float ma = MAE(S, B, data);
+
+      float ma2 = MAE_FuckUnion_FuckFABS(S, B, data);
+
+      free(data->Data);
+      free(data);
+
+      result * Ret = malloc(sizeof(result));
+
+      *Ret = (result){S,B, Lg, m,ma,Rm,};
+
+      return Ret;
 }
+
+
