@@ -4,19 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//struct initialization 
-csvDat * dPy(){
-      return (csvDat *) malloc(sizeof(csvDat));
-}
-
-mainData * mPy(){
-      return (mainData * ) malloc(sizeof(mainData));
-}
-
-result * rPy(){
-      return (result * ) malloc((sizeof(result)));
-}
-
 float Slope(float XYsum, int Xsum, float Ysum, int SXsum, int length){
       return (float)((length * XYsum) - (Xsum * Ysum)) / (float)((length * SXsum) - (Xsum * Xsum));
 }
