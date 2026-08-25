@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import ctypes
 
-
 lib = ctypes.CDLL("./import.so")
 
 class csvData(ctypes.Structure):
@@ -32,7 +31,7 @@ ResPtr = ctypes.POINTER(LinearRes)
 getCSV = lib.readCSVpy
 getCSV.argtypes = [ctypes.c_char_p]
 getCSV.restype = mainPtr
-pCSVdat = lib.readCSVpy(b"./slr_data.csv");
+pCSVdat = lib.readCSVpy(b"./datatest2.csv");
 
 ActData = pCSVdat.contents.Data
 dataLen = pCSVdat.contents.length
@@ -43,7 +42,7 @@ Y_Val = [ActData[i].y for i in range(dataLen)]
 Lireg = lib.assembled
 Lireg.argtypes = [ctypes.c_char_p]
 Lireg.restype = ResPtr
-pLireg = lib.assembled(b"./slr_data.csv")
+pLireg = lib.assembled(b"./datatest2.csv")
 
 PtrPr = pLireg.contents.Y_Predict
 YPredict = [PtrPr[x] for x in range(dataLen)]
